@@ -1,0 +1,26 @@
+#Exercise 22: What Do You Know So Far?
+
+Big revision/review of what I learned so far. Going through all past exercises.
+It's kind of a glossary.
+
+print             print() - can be used for strings or numbers/math
+#                 toggles a one line comment
+Variables         example: cars = 100
+%s/r/d/f          old string formatting
+.format()         new string formatting https://docs.python.org/3/tutorial/inputoutput.html#fancier-output-formatting
+\n                new line break
+\t                horizontal tab
+\\                backslash
+print("""...""")  multi-line print
+input()           get input as string
+import            e.g. from sys import argv - import modules
+argv              gets arguments from commandline input
+open(filename)    creates file object - different parameters r,w,a
+file.read()       reads file
+file.close()      closes file
+file.truncate     truncates/empties file
+file.seek(0)      changes r/w location to beginning
+file.write()      writes to file
+file.readline()   reads just one line of file
+len(<string>)     returns length of string
+def <name>():     creates function
