@@ -1,0 +1,14 @@
+#Exercise 41: Learning to Speak Object-Oriented
+
+class X(object):
+  def __init__(self, J)
+  #class X has a __init__ that takes self and J parameters
+
+foo = X()
+#sets foo to an instance of class X
+foo.M(J)
+#from foo, get the M function and call it with parameters self, J
+foo.K = Q
+#from foo, get the K attribute and set it to Q
+
+#NOTE: see oop_test.py for more ex41

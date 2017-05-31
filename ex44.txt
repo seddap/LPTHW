@@ -1,0 +1,154 @@
+#Exercise 44: Inheritance VS Composition
+
+#Inheritance
+  - used to indicate that one class will get most or all of its features from a parent class
+  - three ways that the parent and child classes interact:
+    1. actions on the child imply an action on the parent
+    2. actions on the child override the action on the parent
+    3. actions on the child alter the action on the parent
+
+#Implicit Inheritance
+
+  class Parent(object):
+
+    def implicit(self):
+      print ("PARENT implicit()")
+
+  class Child(Parent):
+    pass
+
+  dad = Parent()
+  son = Child()
+
+  dad.implicit()
+  son.implicit()
+
+  #OUTPUT:
+  #PARENT implicit()
+  #PARENT implicit()
+
+- pass under class Child is to tell python that you want an empty block
+  - it will inherit all of its behavior from Parent
+- calling son.implicit() even though Child does not have an implicit function defined
+
+#Override Explicity
+
+  class Parent(object):
+
+    def override(self):
+      print ("PARENT override()")
+
+  class Child(Parent):
+
+    def override(self):
+      print ("CHILD override()")
+
+  dad = Parent()
+  son = Child()
+
+  dad.override()
+  son.override()
+
+  #OUTPUT
+  #PARENT override()
+  #CHILD override()
+
+- when "dad.override()" runs, it runs the Parent.override() function because that variable (dad) is a Parent.
+- when "son.override()" runs, it prints out the Child.override() message because son is an instance of Child and Child overrides that function by defining its own version
+
+#Alter Before and After
+- first override the function just like in the example above, but then you use a pyhton built-in named super
+  - get parent version to call
+
+  class Parent(object):
+
+    def altered(self):
+      print ("PARENT altered()")
+
+  class Child(Parent):
+
+    def altered(self):
+      print ("CHILD, BEFORE PARENT altered()")
+      super(Child, self).altered()
+      print ("CHILD, AFTER PARENT altered()")
+
+  dad = Parent()
+  son = Child()
+
+  dad.altered()
+  son.altered()
+
+  #OUTPUT
+  #PARENT altered()
+  #CHILD, BEFORE PARENT altered()
+  #PARENT altered()
+  #CHILD, AFTER PARENT altered()
+
+- important lines 71-73
+  1. because I've overridden Parent.altered the Child.altered version runs
+    - line 71 executes as expected
+  2. before and after, so in line 72 super is used to get the Parent.altered version
+  3. on line 72 'super(Child, self).altered()' is called
+    - aware of inheritance and gets Parent class
+    - call super with arguments child and self, then call the function altered on whatever it returns
+  4. Parent.altered version runs
+    - prints out Parent message
+  5. this returns from the Parent.altered and the Child.altered function continues to print out the next message
+
+#super() with __init__
+- most common use of super () is in __init..
+
+  class Child(Parent)
+
+    def __init__(self):
+      self.stuff = stuff
+      super(Child, self).__init__()
+
+- same as Child.altered example above
+  - setting variables in __init__ before having the Parent initialize with the Parent.__init__
+
+#Composition
+- use other classes and modules rather than rely on implicit Inheritance
+
+  class Other(Object):
+
+      def override(self):
+          print("OTHER override()")
+
+      def implicit(self):
+          print("OTHER implicit()")
+
+      def altered(self):
+          print("OTHER altered()")
+
+  class Child(Object):
+
+      def __init__(self):
+          self.other = Other()
+
+      def implicit(self):
+          self.other.implicit()
+
+      def override(self):
+          print("CHILD override()")
+
+      def altered(self):
+          print("CHILD, BEFORE OTHER altered()")
+          self.other.altered()
+          print("CHILD, AFTER OTHER altered()")
+
+  son = Child()
+
+  son.implicit()
+  son.override()
+  son.altered()
+
+#When to use Inheritance or Composition
+- guidelines:
+  1. avoid multiple inheritance at all costs
+    - too complex to be reliable
+  2. composition to package code into modules that are used in many different unrelated places and situations
+  3. inheritance only when there are clearly related reusable pieces of code thate fit under a single common concept
+
+#STUDYDRILL
+https://www.python.org/dev/peps/pep-0008/

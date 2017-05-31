@@ -1,0 +1,38 @@
+#Exercise 45: You Make a Game
+
+- Map
+  - bedroom
+    - drawer
+    - key
+  - basement
+    - requires key
+    - weak weapon (like baseball bat)
+    - secret room
+      - beneath rug
+      - strong weapon (like sword, gun maybe?)
+  - hallway
+    - front door
+    - basement
+  - street
+    - three houses
+      - ours, one to the right (ruin), one to the left (normal)
+  - house on the left
+    - old creepy dude wants to play rock paper scissors
+      - random
+      - bo3?
+      - if he wins, you won't get passed him and lose
+      - if you win, he attacks you (requires weapon)
+        - if no weapon, you lose
+        - if weak weapon, you need to find medicine
+          - maybe turn limit? 3 turns and you lose?
+        - if strong weapon, you can move forward
+    - shopping list
+      - eggs, milk, steak
+      - randint gives hint for keypad for the shed
+    - path around the house to a shed behind it
+  - shed
+    - hear a faint meow
+    - keypad
+      - clue: shopping list
+      - not to much rng
+    - win the game
